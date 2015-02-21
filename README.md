@@ -6,7 +6,7 @@ As directivas são marcadores em um elemento DOM (como um atributo, o nome do el
 
 Angular vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você criar *Controllers* e *Services*, você pode criar suas próprias diretivas para Angular usar.
 
-*O que significa **"compilar"** um template de HTML? Para AngularJS, "compilação" significa anexar listeners de eventos no HTML para torná-lo interativo.*
+*O que significa **compilar** um template de HTML? Para AngularJS, "compilação" significa anexar listeners de eventos no HTML para torná-lo interativo.*
 
 ###Como criar?
 
