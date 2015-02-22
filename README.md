@@ -291,10 +291,81 @@ ul
 ```
 
 ####priority
+
+Esta opção diz ao AngularJS para ordenar as directivas por prioridade então uma directiva que tem maior prioridade será compilada ligadas antes das outras. A razão para ter essa opção é para podermos realizar seleção condicionada à saída da directiva compilada anteriormente.
+
+No exemplo abaixo, eu quero adicionar classe `btn-primary` somente o elemento tem `btn` classe nele.
+
+```js
+.directive("btn", function(){
+  return {
+    restrict: 'A',
+    priority: 1,
+    link: function(scope, element, attrs) {
+      element.addClass('btn');
+      element.text('btn');
+    }
+  };
+})
+.directive("primary", function(){
+  return {
+    restrict: 'A',
+    priority: 0,
+    link: function(scope, element, attrs) {
+      if (element.hasClass('btn')) {
+        element.addClass('btn-primary');
+        element.text('btn-primary');
+      }
+    }
+  };
+});
+
+```
+
+Exemplo: [http://plnkr.co/edit/S1oFSjk50Iq0zwQIDZ8R?p=preview](http://plnkr.co/edit/S1oFSjk50Iq0zwQIDZ8R?p=preview)
+
+Agora ordenando corretamente a prioridade:
+
+```js
+app.directive("btn", function(){
+  return {
+    restrict: 'A',
+    priority: 1,
+    link: function(scope, element, attrs) {
+      element.addClass('btn');
+      element.text('btn');
+    }
+  };
+});
+
+app.directive("primary", function(){
+  return {
+    restrict: 'A',
+    priority: 2,
+    link: function(scope, element, attrs) {
+      if (element.hasClass('btn')) {
+        element.addClass('btn-primary');
+      element.text('btn-primary');
+      }
+    }
+  };
+});
+```
+
+Exemplo: [http://plnkr.co/edit/YSxjvRzP8TK5BJos7inB?p=preview](http://plnkr.co/edit/YSxjvRzP8TK5BJos7inB?p=preview)
+
+Você só deve usar essa propriedade caso uma directiva dependa da outra para algo.
+
 ####transclude
 ####scope
 ####terminal
 ####require
+
 ####controller
+
+Utilizado para definir o *Controller* que será associado ao template da directiva.
+
 ####compile
 ####link
+Função usada para manipulação do DOM.
+
