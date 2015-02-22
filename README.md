@@ -132,6 +132,8 @@ Para criar seu elemento da diretiva, no template, podemos utilizar 4 formas dife
 <!-- directive:hello-world  -->
 ```
 
+> Para validar seu código em HTML5 use o prefixo **data**, exemplo: data-hello-world.
+
 As mais comumente utilizadas são a `A` e `E` pois as de classe e comentário podem causar confusões em pessoas que não estão acostumadas com AngularJs e na minha opinião pessoal são péssimas para demonstrar que aquele código é uma diretiva.
 
 Exemplo: http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview
@@ -377,8 +379,12 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 ####transclude
 ####scope
 
-Usado para criar um novo escopo filho ou um escopo isolado
+Usado para criar um novo *scope* filho ou um *scope* isolado. Setando o *scope* só irá criar/manter a hierarquia entre o *scope* de um elemento e seu *scope* pai, mas você ainda pode acessar os dados vinculados aos *scopes* dos pais.
 
+#####scope: false
+
+É a opção padrão a qual não cria um novo *scope*
+Is the default option which does not create a new scope for a directive but shares the scope with its parent. In this basic example to understand scopes, I’ve logged the scope of the directive to the console. You can see that the directive has borrowed the controller’s scope so its parent scope will be $rootScope in this case.
 
 ####terminal
 
@@ -434,6 +440,37 @@ Nesse exemplo criamos um *Controller* específico para essa directiva onde adici
 
 Exemplo: [http://plnkr.co/edit/AYi0Fh9tsHo428DoMXZd?p=preview](http://plnkr.co/edit/AYi0Fh9tsHo428DoMXZd?p=preview)
 
+Além de criamos um *Controller* para a directiva também podemos utilizar um já existe.
+
+```html
+<produto-titulo></produto-titulo>
+<produto-descricao></produto-descricao>
+```
+
+```js
+.controller('ProductCtrl', function($scope, $http) {
+  $scope.Product = { name: 'Produto teste', 
+  price: 666,
+  description: 'Testando controller das diretivas'};
+})
+.directive("produtoTitulo", function(){
+  return {
+    restrict: 'AE',
+    controller: 'ProductCtrl',
+    template: '<h1>{{ Product.name }}</h1>'
+  };
+})
+.directive("produtoDescricao", function(){
+  return {
+    restrict: 'AE',
+    controller: 'ProductCtrl',
+    template: '<p>{{ Product.description }}<br />Preço: {{ Product.price }}</p>'
+  };
+})
+```
+
+
+Exemplo: http://plnkr.co/edit/Yk2D9yD567Rh1McjNCzv?p=preview
 
 ####compile
 ####link
