@@ -2,13 +2,15 @@
 
 ##Diretivas
 
-As directivas são marcadores em um elemento DOM (como um atributo, o nome do elemento, comentário ou classe CSS) que informam compilador HTML do AngularJS ($compile) para anexar um comportamento específico para o elemento DOM ou mesmo transformar o elemento DOM e suas filhos.
+As directivas são marcadores em um elemento DOM (como um atributo, o nome do elemento, comentário ou classe CSS) que informam ao compilador HTML do AngularJS ($compile) para anexar um comportamento específico para o elemento DOM ou mesmo transformar o elemento DOM e seus filhos.
 
-Angular vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você criar *Controllers* e *Services*, você pode criar suas próprias diretivas para Angular usar.
+Angular vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você pode criar *Controllers* e *Services*, também pode criar suas próprias diretivas para Angular usar.
 
 *O que significa "compilar" um template de HTML? Para AngularJS, "compilação" significa anexar listeners de eventos no HTML para torná-lo interativo.*
 
 ###Como criar?
+
+![Como criar? Imagem da patente de uma campainha](http://chestofbooks.com/crafts/electricity/Electricity-For-Boys/images/Fig-49-Electric-Bell.png)
 
 Já levando em consideração boas práticas esse é o código para iniciarmos a programação de uma diretiva:
 
@@ -30,6 +32,12 @@ Já levando em consideração boas práticas esse é o código para iniciarmos a
 No código anterior, a função `directive()` registra uma nova directiva em nosso módulo. O primeiro argumento para esta função é o nome da directiva. O segundo argumento é uma função que retorna um objeto de definição da directiva.
 
 O segredo mora no que retornamos nesse objeto e para isso temos uma API para trabalhar com as diretivas.
+
+E todo o código foi encapsulado em uma [IIFE](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) para que não haja "vazamentos" no módulo.
+
+![WAT](https://cldup.com/I-XX4sQNwq.jpg)
+
+Isso vazamento, para que seus dados não *vazem* para o escopo global, então com essa IIFE criamos um escopo local que nos garante o encapsulamento do dados.
 
 ###API
 
@@ -363,7 +371,20 @@ Usado para criar um novo escopo filho ou um escopo isolado
 
 
 ####terminal
+
 ####require
+
+Essa opção permite que você passe um *Controller* associado a outra directiva. Você tem que especificar o nome da directiva a ser importada.
+
+O nome pode ser prefixado com:
+
+> ? – Não acusará nenhum erro se a directiva mencionada não existir.
+> ^ - Vai procurar pela directiva nos elementos pai, se não estiver disponível no mesmo elemento.
+
+Use colchetes para requisitar múltiplas directivas:
+
+> [‘directive1′, ‘directive2′, ‘directive3′]
+
 
 ####controller
 
@@ -396,6 +417,7 @@ E no HTML:
 ```html
 <button power-switch ng-click="toggle()">lampada</button>
 <span>{{state}}</span>
+
 ```
 
 Nesse exemplo criamos um *Controller* específico para essa directiva onde adicionamos propriedade e método, esse o qual pôde ser chamado no método `link` para atrelar a função `toggle` ao evento de click desse elemento usando a directiva `ng-click="toggle()"`. Então a cada click nesse botão ele inverte o `$scope.state`, simples não?
