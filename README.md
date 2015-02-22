@@ -211,25 +211,6 @@ Para usarmos os valores de escopo do *Controller* onde a directiva esta precisam
 ```
 
 ```js
-app.directive("superman", function(){
-  return {
-   restrict: "A",
-   link: function(){
-       alert("Superman ao resgate!");
-     }
-  };
-})
-.directive("flash", function(){
-  return {
-   restrict: "A",
-   link: function(){
-       alert("FLASHHHHHHH!");
-     }
-  };
-});
-```
-
-```js
 (function () {
 
   var directiveSuperman = function () {
