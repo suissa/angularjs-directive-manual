@@ -12,7 +12,7 @@ Basicamente utilizamos as diretivas para encapsular a lógica de apresentação 
 
 ![Você está errado, mas continue tentando.](https://cldup.com/kQb7cU5bJg-3000x3000.jpeg)
 
-Angular vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você pode criar *Controllers* e *Services*, também pode criar suas próprias diretivas para Angular usar.
+O AngularJS vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você pode criar *Controllers* e *Services*, também pode criar suas próprias diretivas para Angular usar.
 
 *O que significa "compilar" um template de HTML? Para AngularJS, "compilação" significa anexar listeners de eventos no HTML para torná-lo interativo.*
 
@@ -75,6 +75,8 @@ myModule.directive('directiveName', function (injectables) {
   };
 });
 ```
+
+![Will falando THE FUCK?](https://cldup.com/zZtuN3sHf0-1200x1200.jpeg)
 
 Ela pode assustar no começo mas nada que meses de estudo não nos ajude, vamos conhecer cada opção, porém começaremos com os mais utilizados.
 
