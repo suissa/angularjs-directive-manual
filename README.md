@@ -1,8 +1,16 @@
-#AngularJs
+#AngularJS
+
+![Logo do AngularJS]https://cldup.com/cWbFHP8Pol-1200x1200.png
 
 ##Diretivas
 
+![Exército de clones](https://cldup.com/04QHfHjmPv.thumb.png)
+
 As directivas são marcadores em um elemento DOM (como um atributo, o nome do elemento, comentário ou classe CSS) que informam ao compilador HTML do AngularJS ($compile) para anexar um comportamento específico para o elemento DOM ou mesmo transformar o elemento DOM e seus filhos.
+
+Basicamente utilizamos as diretivas para encapsular a lógica de apresentação de um módulo, qualquer tipo de interação no DOM deve ser feita única e exclusivamente na directiva, se você estiver fazendo isso no *Controller* tenho péssimas notícias para você.
+
+![Você está errado, mas continue tentando.](https://cldup.com/kQb7cU5bJg-3000x3000.jpeg)
 
 Angular vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você pode criar *Controllers* e *Services*, também pode criar suas próprias diretivas para Angular usar.
 
