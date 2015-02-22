@@ -1,6 +1,6 @@
 #AngularJS
 
-![Logo do AngularJS]https://cldup.com/cWbFHP8Pol-1200x1200.png
+![Logo do AngularJS](https://cldup.com/cWbFHP8Pol-1200x1200.png)
 
 ##Diretivas
 
