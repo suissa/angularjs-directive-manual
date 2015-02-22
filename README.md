@@ -186,6 +186,94 @@ Exemplo: [http://plnkr.co/edit/0obL6YZJuGjGODh9yRLZ?p=preview](http://plnkr.co/e
 
 ####template
 
+Define o conteúdo que deve ser usado pela directiva. Pode incluir HTML, expressões de data-binding e até mesmo outras directivas.
+
+```js
+(function () {
+
+  var directive = function () {
+    return {
+      restrict: 'AECM',
+      template: '<h3>Hello World!!</h3>'
+    };
+  };
+
+  angular.module('moduleName')
+    .directive('directiveName', directive);
+
+}());
+```
+
+Para usarmos os valores de escopo do *Controller* onde a directiva esta precisamos apenas chamar a variável como no template:
+
+```html
+ <div superman flash></div>
+```
+
+```js
+app.directive("superman", function(){
+  return {
+   restrict: "A",
+   link: function(){
+       alert("Superman ao resgate!");
+     }
+  };
+})
+.directive("flash", function(){
+  return {
+   restrict: "A",
+   link: function(){
+       alert("FLASHHHHHHH!");
+     }
+  };
+});
+```
+
+```js
+(function () {
+
+  var directiveSuperman = function () {
+    return {
+      restrict: "A",
+      link: function(){
+         alert("Superman ao resgate!");
+       }
+    };
+  },
+  directiveFlash = function () {
+    return {
+      restrict: "A",
+      link: function(){
+         alert("Superman ao resgate!");
+       }
+    };
+  }
+
+  angular.module('moduleName')
+    .directive('superman', directiveSuperman)
+    .directive('flash', directiveFlash);
+
+}());
+```
+
+Exemplo: [http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview](http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview)
+
+Também podemos utilizar outras directivas dentro, como por exemplo o `ng-repeat`:
+
+```js
+return {
+  restrict: 'AE',
+  template: '<ul><li ng-repeat="l in languages">{{l}}</li></ul>'
+  };
+```
+
+E no *Controller* precisamos apenas setar o array `languages`:
+
+```js
+  $scope.languages = ['javascript', 'php', 'python', 'ruby'];
+```
+
+
 ####templateUrl
 
 ####priority
