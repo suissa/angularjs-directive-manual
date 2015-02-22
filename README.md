@@ -244,7 +244,7 @@ Também podemos utilizar outras directivas dentro, como por exemplo o `ng-repeat
 ```js
 return {
   restrict: 'AE',
-  template: '<ul><li ng-repeat="l in languages">{{l}}</li></ul>'
+  template: '<ul><li ng-repeat="l in languages">{{ l }}</li></ul>'
   };
 ```
 
@@ -254,8 +254,41 @@ E no *Controller* precisamos apenas setar o array `languages`:
   $scope.languages = ['javascript', 'php', 'python', 'ruby'];
 ```
 
+Exemplo: [http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview](http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview)
 
 ####templateUrl
+
+Fornece o caminho para o template que deve ser utilizado pela directiva. Aqui podemos tanto chamar um HTML como podemos chamar uma rota no servidor que sirva esse template renderizado, comumente utilizado em sistemas [MEAN](http://bemean.com.br/) onde o AngularJs consome uma *view* em Jade renderizada pelo Node.js e servida via Express por uma rota.
+
+```js
+return {
+  restrict: 'AE',
+  templateUrl: 'linguagens.html'
+  };
+```
+
+Ou acessando um rota no servidor:
+
+```js
+return {
+  restrict: 'AE',
+  templateUrl: '/expose/linguagens'
+  };
+```
+
+Vamos passar a lógica que estava no nosso `template` para um arquivo HTML:
+
+```html
+<!-- linguagens.html -->
+<ul><li ng-repeat="l in languages">{{ l }}</li></ul>
+```
+
+Ou Jade:
+```jade
+<!-- linguagens.jade -->
+ul
+  li(ng-repeat="l in languages"){{ l }}
+```
 
 ####priority
 ####transclude
