@@ -55,7 +55,7 @@ A API da directiva pode ser um pouco complexa no início, mas com o tempo os con
 var myModule = angular.module('moduleName'); 
 myModule.directive('directiveName', function (injectables) {
   return {
-    restrict: 'ACEM',
+    restrict: 'ACME',
     template: '<div></div>',
     templateUrl: 'directive.html',
     replace: false,
