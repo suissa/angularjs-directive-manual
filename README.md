@@ -358,12 +358,50 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 
 ####transclude
 ####scope
+
+Usado para criar um novo escopo filho ou um escopo isolado
+
+
 ####terminal
 ####require
 
 ####controller
 
 Utilizado para definir o *Controller* que será associado ao template da directiva.
+
+Pode ser tratada como uma sala de controle de directiva. Você pode vincular as propriedades / métodos para US $ âmbito disponível ou essa palavra-chave. Os dados ligados a este estará acessível em outras directivas, injetando o controlador usando exigir opção. 
+
+Você pode pensar nesse método como a sala de controle da directiva, você pode adicionar propriedades/métodos ao `$scope` desse *Controller* e ele pode ser acessado em outras directivas injetando o *Controller* usando a opção `require`.
+No exemplo abaixo, vamos alternar o estado de uma lâmpada de modo que as directivas filhas saberão sobre o estado atual.
+
+```js
+return {
+  restrict: 'A',
+  controller: function($scope, $element, $attrs) {
+    $scope.state = true;
+
+    $scope.toggle = function() {
+      $scope.state = !$scope.state;
+    };
+
+  },
+  link: function($scope, element, attrs) {
+    angular.element(this).click(this.toggle);
+  }
+};
+```
+
+E no HTML:
+
+```html
+<button power-switch ng-click="toggle()">lampada</button>
+<span>{{state}}</span>
+```
+
+Nesse exemplo criamos um *Controller* específico para essa directiva onde adicionamos propriedade e método, esse o qual pôde ser chamado no método `link` para atrelar a função `toggle` ao evento de click desse elemento usando a directiva `ng-click="toggle()"`. Então a cada click nesse botão ele inverte o `$scope.state`, simples não?
+
+Exemplo: [http://plnkr.co/edit/AYi0Fh9tsHo428DoMXZd?p=preview](http://plnkr.co/edit/AYi0Fh9tsHo428DoMXZd?p=preview)
+
 
 ####compile
 ####link
