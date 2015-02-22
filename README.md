@@ -469,6 +469,7 @@ Além de criamos um *Controller* para a directiva também podemos utilizar um j�
 })
 ```
 
+Nesse caso cada directiva recebe sua própria instância do *Controller*, porém estamos compartilhando a lógica entre elas e usando seus dados no template das directivas.
 
 Exemplo: http://plnkr.co/edit/Yk2D9yD567Rh1McjNCzv?p=preview
 
