@@ -376,7 +376,6 @@ Exemplo: [http://plnkr.co/edit/YSxjvRzP8TK5BJos7inB?p=preview](http://plnkr.co/e
 
 Você só deve usar essa propriedade caso uma directiva dependa da outra para algo.
 
-####transclude
 ####scope
 
 Usado para criar um novo *scope* filho ou um *scope* isolado. Setando o *scope* só irá criar/manter a hierarquia entre o *scope* de um elemento e seu *scope* pai, mas você ainda pode acessar os dados vinculados aos *scopes* dos pais.
@@ -387,20 +386,6 @@ Usado para criar um novo *scope* filho ou um *scope* isolado. Setando o *scope* 
 Is the default option which does not create a new scope for a directive but shares the scope with its parent. In this basic example to understand scopes, I’ve logged the scope of the directive to the console. You can see that the directive has borrowed the controller’s scope so its parent scope will be $rootScope in this case.
 
 ####terminal
-
-####require
-
-Essa opção permite que você passe um *Controller* associado a outra directiva. Você tem que especificar o nome da directiva a ser importada.
-
-O nome pode ser prefixado com:
-
-> ? – Não acusará nenhum erro se a directiva mencionada não existir.
-> ^ - Vai procurar pela directiva nos elementos pai, se não estiver disponível no mesmo elemento.
-
-Use colchetes para requisitar múltiplas directivas:
-
-> [‘directive1′, ‘directive2′, ‘directive3′]
-
 
 ####controller
 
@@ -473,7 +458,24 @@ Nesse caso cada directiva recebe sua própria instância do *Controller*, porém
 
 Exemplo: http://plnkr.co/edit/Yk2D9yD567Rh1McjNCzv?p=preview
 
+Caso você queira compartilhar a mesma instância do *Controller* você deve usar o **require**.
+
+####require
+
+Essa opção permite que você compartilhe a mesma instância do *Controller* em várias directivas.
+
+O nome pode ser prefixado com:
+
+> ? – Não acusará nenhum erro se a directiva mencionada não existir.
+> ^ - Vai procurar pela directiva nos elementos pai, se não estiver disponível no mesmo elemento.
+
+Use colchetes para requisitar múltiplas directivas:
+
+> [‘directive1′, ‘directive2′, ‘directive3′]
+
+
 ####compile
 ####link
 Função usada para manipulação do DOM.
 
+####transclude
