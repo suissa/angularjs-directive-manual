@@ -249,6 +249,8 @@ Caso você se depare com um erro assim:
 
 Já sabe que é porque você não encapulou seu template em uma tag.
 
+Exemplo: [http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview](http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview)
+
 ![Fácil não?](https://cldup.com/KwOd022vK8-3000x3000.jpeg)
 
 Mas em busca de mais material para estudar sobre esse atributo encontrei uma informação que diz que ele será depreciado.
