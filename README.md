@@ -530,6 +530,8 @@ Caso você queira compartilhar a mesma instância do *Controller* você deve usa
 
 ####require
 
+![](https://cldup.com/yMjyuh51Cq-2000x2000.jpeg)
+
 Essa opção permite que você compartilhe a mesma instância do *Controller* em várias directivas.
 
 O nome pode ser prefixado com:
