@@ -94,7 +94,7 @@ Para iniciar usaremos esse exemplo simples de diretiva:
   };
 
   angular.module('moduleName')
-    .directive('directiveName', directive);
+    .directive('helloWorld', directive);
 
 }());
 ```
@@ -104,20 +104,14 @@ Para iniciar usaremos esse exemplo simples de diretiva:
 Para criar seu elemento da diretiva, no template, podemos utilizar 4 formas diferentes:
 
 - A: via atributo
-- E: via elemento
 - C: via classe
 - M: via comentário
+- E: via elemento
 
 ##### A
 
 ```html
 <div hello-world></div>
-```
-
-##### E
-
-```html
-<hello-world></hello-world>
 ```
 
 ##### C
@@ -132,6 +126,12 @@ Para criar seu elemento da diretiva, no template, podemos utilizar 4 formas dife
 <!-- directive:hello-world  -->
 ```
 
+##### E
+
+```html
+<hello-world></hello-world>
+```
+
 > Para validar seu código em HTML5 use o prefixo **data**, exemplo: data-hello-world.
 
 As mais comumente utilizadas são a `A` e `E` pois as de classe e comentário podem causar confusões em pessoas que não estão acostumadas com AngularJs e na minha opinião pessoal são péssimas para demonstrar que aquele código é uma diretiva.
@@ -139,6 +139,14 @@ As mais comumente utilizadas são a `A` e `E` pois as de classe e comentário po
 Exemplo: http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview
 
 ![eu não quero](http://memeblender.com/wp-content/uploads/2012/08/ecce-homo-jesus-painting-meme.jpg)
+
+Perceba que o nome da directiva em camelCase, `helloWorld` pode ser usado das seguintes formas no template:
+
+```html
+<hello-world></hello-world>
+
+<hello:world></hello:world>
+```
 
 ###CUIDADO!
 
@@ -535,7 +543,51 @@ Use colchetes para requisitar múltiplas directivas:
 
 
 ####compile
+
+![](http://www.angularjshub.com/code/examples/customdirectives/01_CompileLinkFunctions/images/directives-compile-link-calls.png)
+
+A função `compile` recebe 2 pariametros:
+
+- $elem: é um objeto jqLite contendo o nó do DOM que está sendo compilado (então se a directiva estiver dentro de um elemento div, então o objeto jqLite é o nó que está dentro desse div)
+- $attrs: é um objeto e cada atributo no nó do DOM corresponde a uma propriedade dentro do objeto attrs (note que o nome da propriedade é a versão normalizada do nome do atributo, por exemplo, se meu-atributo é especificado no nó DOM, em seguida, os objeto attrs terá a propriedade meuAtributo e seu valor será o valor real atribuído ao atributo no DOM)
+
+
 ####link
 Função usada para manipulação do DOM.
+
+Exemplo de como manipular um elemento colocando uma cor de fundo nele via CSS.
+
+```html
+<input type="text" ng-model="color" placeholder="Enter a color" />
+<hello-world/>
+```
+
+```js
+return {
+  restrict: 'AE',
+  replace: true,
+  template: '<p style="background-color:{{color}}">Hello World',
+  link: function($scope, $elem, $attrs) {
+    $elem.bind('click', function() {
+      $elem.css('background-color', 'white');
+      $scope.$apply(function() {
+        scope.color = "white";
+      });
+    });
+    $elem.bind('mouseover', function() {
+      $elem.css('cursor', 'pointer');
+    });
+  }
+};
+```
+
+Como vemos a  função `link` recebe 3 parâmetros:
+
+- $scope: é o *scope* associado a nossa directiva
+- $elem: é equivalente ao mesmo parâmetro a função `compile`
+- $attrs: é equivalente ao mesmo parâmetro a função `compile`
+
+E também podemos receber como quarto parâmetro um *Controller*.
+
 
 ####transclude
