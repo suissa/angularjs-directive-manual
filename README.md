@@ -331,7 +331,7 @@ Para usarmos os valores de escopo do *Controller* onde a directiva esta precisam
 }());
 ```
 
-Exemplo: [http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview](http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview)
+Exemplo: [http://plnkr.co/edit/kmHvPtrUTY6rQkU4seAI?p=preview](http://plnkr.co/edit/kmHvPtrUTY6rQkU4seAI?p=preview)
 
 Também podemos utilizar outras directivas dentro, como por exemplo o `ng-repeat`:
 
@@ -457,8 +457,7 @@ Usado para criar um novo *scope* filho ou um *scope* isolado. Setando o *scope* 
 
 #####scope: false
 
-É a opção padrão a qual não cria um novo *scope*
-Is the default option which does not create a new scope for a directive but shares the scope with its parent. In this basic example to understand scopes, I’ve logged the scope of the directive to the console. You can see that the directive has borrowed the controller’s scope so its parent scope will be $rootScope in this case.
+É a opção padrão a qual não cria um novo *scope* para a diretiva, mas a faz compartilhar as propriedades com o *scope* pai.
 
 ####terminal
 
