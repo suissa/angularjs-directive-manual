@@ -176,6 +176,8 @@ Vamos analisar como o HTML foi compilado:
 <hello>Hello</hello>
 ```
 
+Então podemos perceber que ele terminou a compilação na primeira tag que não foi corretamente fechada.
+
 **Dica:** se você deseja compor um elemento com mais de um comportamento, pode por exemplo agrupar directivas do tipo `A` em um único elemento.
 
 
@@ -248,6 +250,16 @@ Caso você se depare com um erro assim:
 Já sabe que é porque você não encapulou seu template em uma tag.
 
 ![Fácil não?](https://cldup.com/KwOd022vK8-3000x3000.jpeg)
+
+Mas em busca de mais material para estudar sobre esse atributo encontrei uma informação que diz que ele será depreciado.
+
+> docs($compile): deprecate `replace` directives
+> **BREAKING CHANGE:**
+
+> The `replace` flag for defining directives that replace the element that they are on will be removed in the next major angular version. This feature has difficult semantics (e.g. how attributes are merged) and leads to more problems compared to what it solves.
+> Also, with WebComponents it is normal to have custom elements in the DOM.
+
+Então melhor se acostumar a deixar ele como `false`.
 
 ####template
 
