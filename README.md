@@ -174,17 +174,24 @@ Caso você esteja usando o `restrict` como `E` dessa forma:
 
 Exemplo: http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview
 
-Ele não irá compilar corretamente mostrando apenas o `Hello`, mas porquê isso acontece?
+
+Ele não irá compilar corretamente mostrando apenas o `Hello`.
 
 ![](https://cldup.com/d6fnc_Dq9j-3000x3000.png)
 
-Vamos analisar como o HTML foi compilado:
+Vamos ver como o HTML foi compilado:
 
 ```
 <hello>Hello</hello>
 ```
 
 Então podemos perceber que ele terminou a compilação na primeira tag que não foi corretamente fechada.
+
+Discussão sobre em [https://github.com/angular/angular.js/issues/1953](https://github.com/angular/angular.js/issues/1953).
+
+> self-closing or void elements as the html spec defines them are very special to the browser parser. you can't make your own, so for your custom elements you have to stick to non-void elements (<foo></foo>).
+> 
+> this can't be changed in angular. closing.
 
 **Dica:** se você deseja compor um elemento com mais de um comportamento, pode por exemplo agrupar directivas do tipo `A` em um único elemento.
 
