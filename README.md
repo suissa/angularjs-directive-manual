@@ -140,6 +140,42 @@ Exemplo: http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview
 
 ![eu não quero](http://memeblender.com/wp-content/uploads/2012/08/ecce-homo-jesus-painting-meme.jpg)
 
+###CUIDADO!
+
+Caso você esteja usando o `restrict` como `E` dessa forma:
+
+```html
+<hello />
+<world />
+```
+
+```js
+.directive("hello", function(){
+  return {
+    restrict: 'E',
+    template: 'Hello'
+  };
+})
+.directive("world", function(){
+  return {
+    restrict: 'E',
+    template: 'World'
+  };
+})
+```
+
+Exemplo: http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview
+
+Ele não irá compilar corretamente mostrando apenas o `Hello`, mas porquê isso acontece?
+
+![](https://cldup.com/d6fnc_Dq9j-3000x3000.png)
+
+Vamos analisar como o HTML foi compilado:
+
+```
+<hello>Hello</hello>
+```
+
 **Dica:** se você deseja compor um elemento com mais de um comportamento, pode por exemplo agrupar directivas do tipo `A` em um único elemento.
 
 
@@ -203,6 +239,15 @@ Exemplo errado:
 
 Exemplo: [http://plnkr.co/edit/0obL6YZJuGjGODh9yRLZ?p=preview](http://plnkr.co/edit/0obL6YZJuGjGODh9yRLZ?p=preview)
 
+Caso você se depare com um erro assim:
+
+```js
+ Template for directive 'directiveName' must have exactly one root element. 
+```
+
+Já sabe que é porque você não encapulou seu template em uma tag.
+
+![Fácil não?](https://cldup.com/KwOd022vK8-3000x3000.jpeg)
 
 ####template
 
