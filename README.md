@@ -2,7 +2,7 @@
 
 ![Logo do AngularJS](https://cldup.com/cWbFHP8Pol-1200x1200.png)
 
-##Diretivas
+##Directivas
 
 ![Exército de clones](https://cldup.com/04QHfHjmPv.thumb.png)
 
