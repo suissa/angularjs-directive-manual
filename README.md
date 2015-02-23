@@ -546,11 +546,22 @@ Use colchetes para requisitar múltiplas directivas:
 
 ![](http://www.angularjshub.com/code/examples/customdirectives/01_CompileLinkFunctions/images/directives-compile-link-calls.png)
 
-A função `compile` recebe 2 pariametros:
+A função `compile` recebe 2 parâmetros:
 
 - $elem: é um objeto jqLite contendo o nó do DOM que está sendo compilado (então se a directiva estiver dentro de um elemento div, então o objeto jqLite é o nó que está dentro desse div)
 - $attrs: é um objeto e cada atributo no nó do DOM corresponde a uma propriedade dentro do objeto attrs (note que o nome da propriedade é a versão normalizada do nome do atributo, por exemplo, se meu-atributo é especificado no nó DOM, em seguida, os objeto attrs terá a propriedade meuAtributo e seu valor será o valor real atribuído ao atributo no DOM)
 
+Neste exemplo vamos ver como as directivas são processadas pelo AngularJS quando encontra-los em um template HTML e como podemos escrever nossas próprias diretivas personalizadas.
+
+Exemplo: [http://plnkr.co/edit/B8zFNUcwARkjONxZhohX?p=preview](http://plnkr.co/edit/B8zFNUcwARkjONxZhohX?p=preview)
+
+#####Fases de inicialização, compilação e linking
+
+Quando AngularJS analisa o template HTML para processar as directivas, podemos identificar três fases principais que cada directiva passa por:
+
+- inicialização: isso acontece quando uma directiva é encontrada pela primeira vez na passagem de árvore DOM (assim acontece apenas uma vez, mesmo que a directiva apareça várias vezes no template HTML) e permite que a directiva  inicialize-se internamente, se necessário
+- compilação: nesta fase o AngularJS manipula o DOM do template HTML e cada directiva tem uma chance de fazer algum processamento para cada nó em que ela aparece (por isso, se a mesma directiva aparece em vários nós DOM, a compilação da directiva terá cha para cada node); na fase de compilação de uma directiva também tem a chance de modificar o nó DOM antes de um escopo é ligado a ele
+- nesta fase o AngularJS atribui *listeners* de eventos para o template HTML para torná-lo interativo e atribui um *scope* da directiva e ele faz isso para cada nó do DOM em que a directiva aparece; a fase de linking ocorre após a compilação de todo o template HTML foi executado
 
 ####link
 Função usada para manipulação do DOM.
