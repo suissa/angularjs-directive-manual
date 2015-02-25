@@ -451,6 +451,7 @@ Exemplo: [http://plnkr.co/edit/YSxjvRzP8TK5BJos7inB?p=preview](http://plnkr.co/e
 
 Você só deve usar essa propriedade caso uma directiva dependa da outra para algo.
 
+***
 ####scope
 
 Ao contrário dos outros frameworks MVC, AngularJS não tem classes ou funções específicas para a criação de *models*. Em vez disso, AngularJS estende os objetos JavaScript com métodos e propriedades personalizados. Esses objetos, também conhecido como *scope*, trabalham como uma cola entre a *view* e outras partes (*directives*, *controllers* e *services*) dentro da aplicação.
