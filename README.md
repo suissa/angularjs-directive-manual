@@ -224,7 +224,7 @@ Exemplo: [http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview](http://plnkr.co/e
 
 ####replace
 
-Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligado. No caso utilizado uma directiva como `<hello-world> </ hello-world>`, a substituição é definida como `true`. Assim, após a diretiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocado.
+Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligado. No caso utilizado uma directiva como `<hello-world> </hello-world>`, a substituição é definida como `true`. Assim, após a diretiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocado.
 
 O código gerado com `replace: false`:
 
@@ -454,6 +454,8 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 ####scope
 
 Usado para criar um novo *scope* filho ou um *scope* isolado. Setando o *scope* só irá criar/manter a hierarquia entre o *scope* de um elemento e seu *scope* pai, mas você ainda pode acessar os dados vinculados aos *scopes* dos pais.
+
+#####scope: true
 
 #####scope: false
 
