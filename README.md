@@ -463,7 +463,7 @@ Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, el
 - true
 - isolate (não esse valor, veremos logo abaixo)
 
-__
+***
 #####scope: true
 
 Cria um novo *scope*, mas prototipicamente herda o *scope* pai. Logo o seu *scope* pai será o *scope* do *Controller*, não o `$rootScope`.
@@ -489,6 +489,7 @@ angular.module('myapp')
 
 Exemplo: http://plnkr.co/edit/C0zlV1XnpbFHDPnbb5YS?p=preview
 
+***
 #####scope: false
 
 É a opção padrão a qual não cria um novo *scope* para a diretiva, mas a faz compartilhar as propriedades com o *scope* pai, nesse caso o `$rootScope`.
@@ -514,6 +515,7 @@ app
 
 Exemplo: http://plnkr.co/edit/tGPmiagxXLuDHup7rNqi?p=preview
 
+***
 #####scope: isolate
 
 Cria um *scope* isolado que não herda prototipicamente do *scope* pai, mas você pode acessar escopo pai usando scope.$parent.
