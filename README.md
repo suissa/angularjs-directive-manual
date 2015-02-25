@@ -455,7 +455,7 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 
 Ao contrário dos outros frameworks MVC, AngularJS não tem classes ou funções específicas para a criação de *models*. Em vez disso, AngularJS estende os objetos JavaScript com métodos e propriedades personalizados. Esses objetos, também conhecido como *scope*, trabalham como uma cola entre a *view* e outras partes (*directives*, *controllers* e *services*) dentro da aplicação.
 
-Quando a aplicação é iniciada, um objeto `rootScope` é criado. Cada *scope* criado por *directives*, *controllers* e *services* são prototipicamente herdados de rootScope.
+Quando a aplicação é iniciada, um objeto `rootScope é criado. Cada *scope* criado por *directives*, *controllers* e *services* são prototipicamente herdados de rootScope.
 
 Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, elas aceita 3 valores:
 
@@ -463,6 +463,7 @@ Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, el
 - true
 - isolate (não esse valor, veremos logo abaixo)
 
+__
 #####scope: true
 
 Cria um novo *scope*, mas prototipicamente herda o *scope* pai. Logo o seu *scope* pai será o *scope* do *Controller*, não o `$rootScope`.
