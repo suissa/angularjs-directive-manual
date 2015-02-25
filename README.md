@@ -453,13 +453,69 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 
 ####scope
 
-Usado para criar um novo *scope* filho ou um *scope* isolado. Setando o *scope* só irá criar/manter a hierarquia entre o *scope* de um elemento e seu *scope* pai, mas você ainda pode acessar os dados vinculados aos *scopes* dos pais.
+Ao contrário dos outros frameworks MVC, AngularJS não tem classes ou funções específicas para a criação de *models*. Em vez disso, AngularJS estende os objetos JavaScript com métodos e propriedades personalizados. Esses objetos, também conhecido como *scope*, trabalham como uma cola entre a *view* e outras partes (*directives*, *controllers* e *services*) dentro da aplicação.
+
+Quando a aplicação é iniciada, um objeto `rootScope` é criado. Cada *scope* criado por *directives*, *controllers* e *services* são prototipicamente herdados de rootScope.
+
+Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, elas aceita 3 valores:
+
+- false (padrão)
+- true
+- isolate (não esse valor, veremos logo abaixo)
 
 #####scope: true
 
+Cria um novo *scope*, mas prototipicamente herda o *scope* pai. Logo o seu *scope* pai será o *scope* do *Controller*, não o `$rootScope`.
+
+```js
+angular.module('myapp', []);
+
+angular.module('myapp')
+.run(function($rootScope) {
+  $rootScope.autor = 'Ninguém';
+})
+.controller('MainCtrl', function($scope, $http, $rootScope) {
+  $scope.autor = 'Suissa';
+})
+.directive("comScopeTrue", function(){
+  return {
+    restrict: 'E',
+    scope: true,
+    template: 'Autor: {{$parent.autor}}'
+  };
+});
+```
+
+Exemplo: http://plnkr.co/edit/C0zlV1XnpbFHDPnbb5YS?p=preview
+
 #####scope: false
 
-É a opção padrão a qual não cria um novo *scope* para a diretiva, mas a faz compartilhar as propriedades com o *scope* pai.
+É a opção padrão a qual não cria um novo *scope* para a diretiva, mas a faz compartilhar as propriedades com o *scope* pai, nesse caso o `$rootScope`.
+
+```js
+var app = angular.module('myapp', []);
+
+app
+.run(function($rootScope) {
+  $rootScope.autor = 'Ninguém';
+})
+.controller('MainCtrl', function($scope, $http, $rootScope) {
+  $scope.autor = 'Suissa';
+})
+.directive("comScopeFalse", function(){
+  return {
+    restrict: 'E',
+    scope: false,
+    template: 'Autor: {{$parent.autor}}'
+  };
+});
+```
+
+Exemplo: http://plnkr.co/edit/tGPmiagxXLuDHup7rNqi?p=preview
+
+#####scope: isolate
+
+Cria um *scope* isolado que não herda prototipicamente do *scope* pai, mas você pode acessar escopo pai usando scope.$parent.
 
 ####terminal
 
