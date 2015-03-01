@@ -220,7 +220,7 @@ Discussão sobre em [https://github.com/angular/angular.js/issues/1953](https://
 }());
 ```
 
-Exemplo: [http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview](http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview)
+Exemplo: [http://plnkr.co/edit/DPk8jazoAnpjFCdRampH?p=preview](http://plnkr.co/edit/DPk8jazoAnpjFCdRampH?p=preview)
 
 ####replace
 
