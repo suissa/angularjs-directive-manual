@@ -394,7 +394,7 @@ ul
 ![Tudo é prioridade](https://cldup.com/K2QgqX7BRL-1200x1200.jpeg)
 Esta opção diz ao AngularJS para ordenar as directivas por prioridade então uma directiva que tem maior prioridade será compilada ligadas antes das outras. A razão para ter essa opção é para podermos realizar seleção condicionada à saída da directiva compilada anteriormente.
 
-No exemplo abaixo, eu quero adicionar classe `btn-primary` somente o elemento tem `btn` classe nele.
+No exemplo abaixo, eu quero adicionar classe `btn-primary` somente se o elemento tiver a classe `btn` nele.
 
 ```js
 .directive("btn", function(){
