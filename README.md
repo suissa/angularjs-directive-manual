@@ -99,6 +99,7 @@ Para iniciar usaremos esse exemplo simples de diretiva:
 }());
 ```
 
+***
 ####restrict
 
 Para criar seu elemento da diretiva, no template, podemos utilizar 4 formas diferentes:
@@ -222,6 +223,7 @@ Discussão sobre em [https://github.com/angular/angular.js/issues/1953](https://
 
 Exemplo: [http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview](http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview)
 
+***
 ####replace
 
 Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligado. No caso utilizado uma directiva como `<hello-world> </hello-world>`, a substituição é definida como `true`. Assim, após a diretiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocado.
@@ -278,6 +280,7 @@ Mas em busca de mais material para estudar sobre esse atributo encontrei uma inf
 
 Então melhor se acostumar a deixar ele como `false`.
 
+***
 ####template
 
 Define o conteúdo que deve ser usado pela directiva. Pode incluir HTML, expressões de data-binding e até mesmo outras directivas.
@@ -350,6 +353,7 @@ E no *Controller* precisamos apenas setar o array `languages`:
 
 Exemplo: [http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview](http://plnkr.co/edit/FkC9H2AtUEdMtUtJGDcv?p=preview)
 
+***
 ####templateUrl
 
 Fornece o caminho para o template que deve ser utilizado pela directiva. Aqui podemos tanto chamar um HTML como podemos chamar uma rota no servidor que sirva esse template renderizado, comumente utilizado em sistemas [MEAN](http://bemean.com.br/) onde o AngularJs consome uma *view* em Jade renderizada pelo Node.js e servida via Express por uma rota.
@@ -384,6 +388,7 @@ ul
   li(ng-repeat="l in languages"){{ l }}
 ```
 
+***
 ####priority
 
 ![Tudo é prioridade](https://cldup.com/K2QgqX7BRL-1200x1200.jpeg)
@@ -454,41 +459,21 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 ***
 ####scope
 
+É importante primeiro ter uma sólida compreensão da herança de protótipo do JavaScript, especialmente se você está vindo de um *background* de *backend* e você está mais familiarizado com a herança clássica. Então, vamos rever isso primeiro.
+
+Suponha que parentScope tem as propriedades aString, aNumber, umArray, anObject e AFunction. Se childScope herda prototipicamente de parentScope, temos:
+
+![](https://camo.githubusercontent.com/85ec776a0dd4acbe687f3db6367fa56872abb87f/687474703a2f2f692e737461636b2e696d6775722e636f6d2f61544147672e706e67)
+
 Ao contrário dos outros frameworks MVC, AngularJS não tem classes ou funções específicas para a criação de *models*. Em vez disso, AngularJS estende os objetos JavaScript com métodos e propriedades personalizados. Esses objetos, também conhecido como *scope*, trabalham como uma cola entre a *view* e outras partes (*directives*, *controllers* e *services*) dentro da aplicação.
 
-Quando a aplicação é iniciada, um objeto `rootScope é criado. Cada *scope* criado por *directives*, *controllers* e *services* são prototipicamente herdados de rootScope.
+Quando a aplicação é iniciada, um objeto `rootScope` é criado. Cada *scope* criado por *directives*, *controllers* e *services* são prototipicamente herdados de rootScope.
 
 Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, elas aceita 3 valores:
 
 - false (padrão)
 - true
 - isolate (não esse valor, veremos logo abaixo)
-
-***
-#####scope: true
-
-Cria um novo *scope*, mas prototipicamente herda o *scope* pai. Logo o seu *scope* pai será o *scope* do *Controller*, não o `$rootScope`.
-
-```js
-angular.module('myapp', []);
-
-angular.module('myapp')
-.run(function($rootScope) {
-  $rootScope.autor = 'Ninguém';
-})
-.controller('MainCtrl', function($scope, $http, $rootScope) {
-  $scope.autor = 'Suissa';
-})
-.directive("comScopeTrue", function(){
-  return {
-    restrict: 'E',
-    scope: true,
-    template: 'Autor: {{$parent.autor}}'
-  };
-});
-```
-
-Exemplo: http://plnkr.co/edit/C0zlV1XnpbFHDPnbb5YS?p=preview
 
 ***
 #####scope: false
@@ -517,9 +502,51 @@ app
 Exemplo: http://plnkr.co/edit/tGPmiagxXLuDHup7rNqi?p=preview
 
 ***
+#####scope: true
+
+Cria um novo *scope*, mas prototipicamente herda o *scope* pai. Logo o seu *scope* pai será o *scope* do *Controller*, não o `$rootScope`.
+
+```js
+angular.module('myapp', []);
+
+angular.module('myapp')
+.run(function($rootScope) {
+  $rootScope.autor = 'Ninguém';
+})
+.controller('MainCtrl', function($scope, $http, $rootScope) {
+  $scope.autor = 'Suissa';
+})
+.directive("comScopeTrue", function(){
+  return {
+    restrict: 'E',
+    scope: true,
+    template: 'Autor: {{$parent.autor}}'
+  };
+});
+```
+
+Exemplo: http://plnkr.co/edit/C0zlV1XnpbFHDPnbb5YS?p=preview
+
+**#escrever sobre o scope.$parent**
+
+***
 #####scope: isolate
 
 Cria um *scope* isolado que não herda prototipicamente do *scope* pai, mas você pode acessar escopo pai usando scope.$parent.
+
+> How can I then share the data between isolated scope and its parent scope as scope.$parent is not much useful in case of templates?
+
+> Como eu posso compartilhar dados entre *scope* isolate e o *scope* pai?
+
+Bem, *scope* isolado pega um objeto/hash que leva você as propriedades do *scope* pai e *binda* elas no *scope* local. Existem 3 formas de fazer isso:
+
+- **@**: pega o valor do *scope* pai
+- **=**: pega um valor passado via atributo para diretiva
+- **&**: *binda* uma expressão ou método que será executada no *scope* da diretiva
+
+@ – binds the value of parent scope property (which always a string) to the local scope. So the value you want to pass in should be wrapped in {{}}. Remember `a` in braces.
+= – binds parent scope property directly which will be evaluated before being passed in.
+& – binds an expression or method which will be executed in the context of the scope it belongs.
 
 ####terminal
 
@@ -596,6 +623,7 @@ Exemplo: http://plnkr.co/edit/Yk2D9yD567Rh1McjNCzv?p=preview
 
 Caso você queira compartilhar a mesma instância do *Controller* você deve usar o **require**.
 
+***
 ####require
 
 ![](https://cldup.com/yMjyuh51Cq-2000x2000.jpeg)
@@ -611,7 +639,7 @@ Use colchetes para requisitar múltiplas directivas:
 
 > [‘directive1′, ‘directive2′, ‘directive3′]
 
-
+***
 ####compile
 
 ![](http://www.angularjshub.com/code/examples/customdirectives/01_CompileLinkFunctions/images/directives-compile-link-calls.png)
@@ -633,6 +661,7 @@ Quando AngularJS analisa o template HTML para processar as directivas, podemos i
 - compilação: nesta fase o AngularJS manipula o DOM do template HTML e cada directiva tem uma chance de fazer algum processamento para cada nó em que ela aparece (por isso, se a mesma directiva aparece em vários nós DOM, a compilação da directiva terá cha para cada node); na fase de compilação de uma directiva também tem a chance de modificar o nó DOM antes de um escopo é ligado a ele
 - nesta fase o AngularJS atribui *listeners* de eventos para o template HTML para torná-lo interativo e atribui um *scope* da directiva e ele faz isso para cada nó do DOM em que a directiva aparece; a fase de linking ocorre após a compilação de todo o template HTML foi executado
 
+***
 ####link
 Função usada para manipulação do DOM.
 
@@ -670,5 +699,89 @@ Como vemos a  função `link` recebe 3 parâmetros:
 
 E também podemos receber como quarto parâmetro um *Controller*.
 
-
+***
 ####transclude
+
+Pode haver um momento em que você quer que sua directiva "sobrescreva" o conteúdo existente de um elemento. Angular não só lhe permite fazer isso, mas também lhe dá um controle para inserir o DOM "transcluído" onde quiser usando a diretiva ngTransclude.
+
+- true
+- element
+
+#####true
+Dentro da função de *compile*, você pode manipular o DOM com a ajuda da função de transclude ou você pode inserir o DOM "transcluído" para o template usando a diretiva ngTransclude em qualquer tag HTML. Observe nossa antiga e adorada tag marquee:
+
+```html
+<div class="thumbnail" style="width: 260px;">
+  <div><img ng-src="{{data.owner.avatar_url}}" style="width:100%;"/></div>
+  <div class="caption">
+    <p><b>Name: </b>{{data.name}}</p>
+    <p><b>Homepage: </b>{{data.homepage}}</p>
+    <p><b>Watchers: </b>{{data.watchers}}</p>
+    <p><b>Forks: </b>{{data.network_count}}</p>
+    <marquee ng-transclude></marquee>
+  </div>
+</div>
+```
+
+```js
+<div whoiam>Eu fui "transcluded"</div>
+
+<script src="angular.min.js"></script>
+<script>
+  angular.module('Diretivas', [])
+  .directive('whoiam', function($http) {
+    return {
+      restrict: 'A',
+      transclude: true,
+      templateUrl: 'whoiam.html',
+      link: function(scope, element, attrs) {
+        $http.get('https://api.github.com/repos/angular/angular.js')
+        .success(function(data) {
+         scope.data = data;
+        });
+      }
+   };
+ });
+```
+
+
+#####element
+
+Essa opção "sobrescreve" todo o elemento e uma função transclude é introduzida na função de *compile*. Você não pode ter acesso ao *scope* aqui, pois o *scope* ainda não foi criado. A função *compile* cria uma função *link* para a directiva que tem acesso ao *scope* e transcludeFn permite tocar o elemento clonado (que foi "transcluído") para manipulação de DOM ou fazer uso de dados vinculados ao seu *scope*. Isso é usado em ng-repeat e ng-switch.
+
+```js
+
+<div transclude-element>I fui "transcluído" <filho></filho></div>
+
+<script src="angular.min.js"></script>
+<script>
+  angular.module('Diretivas', [])
+  .directive('transcludeElement', function() {
+    return {
+      restrict: 'A',
+      transclude: 'element',
+      compile: function($element, $attrs, transcludeFn) {
+        return function ($scope, el, $attrs) {
+          transcludeFn($scope, function cloneConnectFn(cElement) {
+              $element
+              .after('<h2>Eu fui adicionado durante compilação </h2>')
+              .after(cElement);
+          });
+        };
+      }
+    };
+  })
+  .directive('filho', function(){
+    return {
+      restrict: 'E',
+      link: function($scope, element, attrs) {
+          element.html(' com meu filho');
+      }
+    };
+  });
+
+</script>
+```
+
+
+
