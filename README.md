@@ -394,7 +394,7 @@ ul
 ![Tudo é prioridade](https://cldup.com/K2QgqX7BRL-1200x1200.jpeg)
 Esta opção diz ao AngularJS para ordenar as directivas por prioridade então uma directiva que tem maior prioridade será compilada ligadas antes das outras. A razão para ter essa opção é para podermos realizar seleção condicionada à saída da directiva compilada anteriormente.
 
-No exemplo abaixo, eu quero adicionar classe `btn-primary` somente se o elemento tiver a classe `btn` nele.
+No exemplo abaixo, eu quero adicionar classe `btn-primary` somente o elemento tem `btn` classe nele.
 
 ```js
 .directive("btn", function(){
@@ -638,6 +638,33 @@ O nome pode ser prefixado com:
 Use colchetes para requisitar múltiplas directivas:
 
 > [‘directive1′, ‘directive2′, ‘directive3′]
+
+
+
+  **require: ngModel**
+  Quando você faz o require do ngModel, vem integrado com ele o ngModelController, que voce injeta na função link. 
+ 
+
+  Quando você tem o ngModelController instanciado na sua função link, você pode se utilizar de todas as validações que o angular te dá. Ele pode ser útil quando você quiser encapsular inputs dentro da sua directive, e adicionar classes de css, mensagens de erro e outras tratamentos de erro(como eventos) pra caso a validação ocorra.
+
+   Ela possui outros diversos métodos, como: 
+  - **$isEmpty(value)**: Faz a verificação pra ver se o valor do input é vazio ou não.
+  - **$setValidity(nomeValidacao,boolean)**: É usado pra adicionar/retirar validação de um campo. Se você utilizar o boolean como true, vai dizer que o campo está valido, e vice-versa.
+  - **$setPristine()**: Você pode utilizar esta função pra limpar seu campo, assim como a função $setDirty() pra "sujar" seu campo, porém a $setPristine() é mais comum.
+  - **$rollBackViewValue()**: Cancela a atualização e reseta o valor do input para que o valor do modelo não seja atualizado.
+
+  #### Parsers e Formatters
+
+  - **$parsers**: é um Array de funções que serão executadas uma atrás da outra toda vez que o valor da `VISÃO` mudar. É util para se utilizar de validações apenas na tela e por exemplo bloquear o botão de submit do usuário enquanto o formato que ele digitou não seja válido. Todas as funções do array tem que retornar o texto que será passado como parâmetro para a próxima funcão que vem em seguida. Caso o valor retornado por uma das funções seja undefined, significa que algum erro de javascript ocorreu.
+
+  -**$formatters**: é um array de funções que serão executadas uma atrás da outra toda vez que o valor do `MODELO`, ou seja, você pode utilizar os $formatters para validar caso receba algum dado de uma chamada REST, ou algo do tipo, porém eles não são tão utilizados quanto os $parsers.
+
+  -**$validators e $asyncValidators**: são 2 arrays que o ngModelController possui que mostram todos as funções de validação que o `model` tem. Os $asyncValidators óbviamente são para validações assíncronas.
+
+  As outras propriedades mostram o estado do seu input, como $pristine, caso não tenha sido alterado ainda, e coisas do tipo. Você pode ver a API completa [aqui](https://docs.angularjs.org/api/ng/type/ngModel.NgModelController).
+
+
+O `ngModelController` não precisa ser utilizado necessariamente na directive. Vale lembrar também que apesar dele fazer a validação no front, isso não garante que o valor que será enviado para o seu back-end será valido, então é necessário validar nos dois.
 
 ***
 ####compile
