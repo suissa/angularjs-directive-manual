@@ -175,7 +175,6 @@ Caso você esteja usando o `restrict` como `E` dessa forma:
 
 Exemplo: http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview
 
-
 Ele não irá compilar corretamente mostrando apenas o `Hello`.
 
 ![](https://cldup.com/d6fnc_Dq9j-3000x3000.png)
@@ -195,7 +194,6 @@ Discussão sobre em [https://github.com/angular/angular.js/issues/1953](https://
 > this can't be changed in angular. closing.
 
 **Dica:** se você deseja compor um elemento com mais de um comportamento, pode por exemplo agrupar directivas do tipo `A` em um único elemento.
-
 
 ```js
 (function () {
@@ -581,7 +579,6 @@ E no HTML:
 ```html
 <button power-switch ng-click="toggle()">lampada</button>
 <span>{{state}}</span>
-
 ```
 
 Nesse exemplo criamos um *Controller* específico para essa directiva, onde adicionamos propriedade e método, esse o qual pôde ser chamado no método `link` para atrelar a função `toggle` ao evento de click desse elemento usando a directiva `ng-click="toggle()"`. Então a cada click nesse botão ele inverte o `$scope.state`, simples não?
@@ -737,20 +734,19 @@ Dentro da função de *compile*, você pode manipular o DOM com a ajuda da funç
       link: function(scope, element, attrs) {
         $http.get('https://api.github.com/repos/angular/angular.js')
         .success(function(data) {
-         scope.data = data;
+          scope.data = data;
         });
       }
    };
  });
+</script>
 ```
-
 
 #####element
 
 Essa opção "sobrescreve" todo o elemento e uma função transclude é introduzida na função de *compile*. Você não pode ter acesso ao *scope* aqui, pois o *scope* ainda não foi criado. A função *compile* cria uma função *link* para a directiva que tem acesso ao *scope* e transcludeFn permite tocar o elemento clonado (que foi "transcluído") para manipulação de DOM ou fazer uso de dados vinculados ao seu *scope*. Isso é usado em ng-repeat e ng-switch.
 
 ```js
-
 <div transclude-element>I fui "transcluído" <filho></filho></div>
 
 <script src="angular.min.js"></script>
@@ -779,7 +775,6 @@ Essa opção "sobrescreve" todo o elemento e uma função transclude é introduz
       }
     };
   });
-
 </script>
 ```
 
