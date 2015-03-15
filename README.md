@@ -8,11 +8,11 @@
 
 As directivas são marcadores em um elemento DOM (como um atributo, o nome do elemento, comentário ou classe CSS) que informam ao compilador HTML do AngularJS ($compile) para anexar um comportamento específico para o elemento DOM ou mesmo transformar o elemento DOM e seus filhos.
 
-Basicamente utilizamos as diretivas para encapsular a lógica de apresentação de um módulo, qualquer tipo de interação no DOM deve ser feita única e exclusivamente na directiva, se você estiver fazendo isso no *Controller* tenho péssimas notícias para você.
+Basicamente utilizamos as directivas para encapsular a lógica de apresentação de um módulo, qualquer tipo de interação no DOM deve ser feita única e exclusivamente na directiva, se você estiver fazendo isso no *Controller* tenho péssimas notícias para você.
 
 ![Você está errado, mas continue tentando.](https://cldup.com/kQb7cU5bJg-3000x3000.jpeg)
 
-O AngularJS vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você pode criar *Controllers* e *Services*, também pode criar suas próprias diretivas para Angular usar.
+O AngularJS vem com um conjunto de directivas internas, como `ngBind`, `ngModel` e `ngClass`. Assim como você pode criar *Controllers* e *Services*, também pode criar suas próprias directivas para o Angular usar.
 
 *O que significa "compilar" um template de HTML? Para AngularJS, "compilação" significa anexar listeners de eventos no HTML para torná-lo interativo.*
 
@@ -20,7 +20,7 @@ O AngularJS vem com um conjunto de directivas internas, como `ngBind`, `ngModel`
 
 ![Como criar? Imagem da patente de uma campainha](http://chestofbooks.com/crafts/electricity/Electricity-For-Boys/images/Fig-49-Electric-Bell.png)
 
-Já levando em consideração boas práticas esse é o código para iniciarmos a programação de uma diretiva:
+Já levando em consideração boas práticas esse é o código para iniciarmos a programação de uma directiva:
 
 ```js
 (function () {
@@ -39,7 +39,7 @@ Já levando em consideração boas práticas esse é o código para iniciarmos a
 
 No código anterior, a função `directive()` registra uma nova directiva em nosso módulo. O primeiro argumento para esta função é o nome da directiva. O segundo argumento é uma função que retorna um objeto de definição da directiva.
 
-O segredo mora no que retornamos nesse objeto e para isso temos uma API para trabalhar com as diretivas.
+O segredo mora no que retornamos nesse objeto e para isso temos uma API para trabalhar com as directivas.
 
 E todo o código foi encapsulado em uma [IIFE](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) para que não haja "vazamentos" no módulo.
 
@@ -80,7 +80,7 @@ myModule.directive('directiveName', function (injectables) {
 
 Ela pode assustar no começo mas nada que meses de estudo não nos ajude, vamos conhecer cada opção, porém começaremos com os mais utilizados.
 
-Para iniciar usaremos esse exemplo simples de diretiva:
+Para iniciar usaremos esse exemplo simples de directiva:
 
 ```js
 (function () {
@@ -102,7 +102,7 @@ Para iniciar usaremos esse exemplo simples de diretiva:
 ***
 ####restrict
 
-Para criar seu elemento da diretiva, no template, podemos utilizar 4 formas diferentes:
+Para criar seu elemento da directiva, no template, podemos utilizar 4 formas diferentes:
 
 - A: via atributo
 - C: via classe
@@ -135,7 +135,7 @@ Para criar seu elemento da diretiva, no template, podemos utilizar 4 formas dife
 
 > Para validar seu código em HTML5 use o prefixo **data**, exemplo: data-hello-world.
 
-As mais comumente utilizadas são a `A` e `E` pois as de classe e comentário podem causar confusões em pessoas que não estão acostumadas com AngularJs e na minha opinião pessoal são péssimas para demonstrar que aquele código é uma diretiva.
+As mais comumente utilizadas são a `A` e `E` pois as de classe e comentário podem causar confusões em pessoas que não estão acostumadas com AngularJs e na minha opinião pessoal são péssimas para demonstrar que aquele código é uma directiva.
 
 Exemplo: http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview
 
@@ -226,7 +226,7 @@ Exemplo: [http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview](http://plnkr.co/e
 ***
 ####replace
 
-Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligado. No caso utilizado uma directiva como `<hello-world> </hello-world>`, a substituição é definida como `true`. Assim, após a diretiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocado.
+Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligado. No caso utilizado uma directiva como `<hello-world> </hello-world>`, a substituição é definida como `true`. Assim, após a directiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocado.
 
 O código gerado com `replace: false`:
 
@@ -242,7 +242,7 @@ E agora gerado com `replace: true`:
 <h3>Hello World!!</h3>
 ```
 
-Então ele basicamente substitiu o seu elemento da diretiva pelo resultado *compilado* dela. Com o `replace` setado como `true` você necessariamente precisa ter um elemento como raíz agrupando o conteúdo do template.
+Então ele basicamente substitiu o seu elemento da directiva pelo resultado *compilado* dela. Com o `replace` setado como `true` você necessariamente precisa ter um elemento como raíz agrupando o conteúdo do template.
 
 Exemplo correto:
 
@@ -478,7 +478,7 @@ Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, el
 ***
 #####scope: false
 
-É a opção padrão a qual não cria um novo *scope* para a diretiva, mas a faz compartilhar as propriedades com o *scope* pai, nesse caso o `$rootScope`.
+É a opção padrão a qual não cria um novo *scope* para a directiva, mas a faz compartilhar as propriedades com o *scope* pai, nesse caso o `$rootScope`.
 
 ```js
 var app = angular.module('myapp', []);
@@ -541,8 +541,8 @@ Cria um *scope* isolado que não herda prototipicamente do *scope* pai, mas voc�
 Bem, *scope* isolado pega um objeto/hash que leva você as propriedades do *scope* pai e *binda* elas no *scope* local. Existem 3 formas de fazer isso:
 
 - **@**: pega o valor do *scope* pai
-- **=**: pega um valor passado via atributo para diretiva
-- **&**: *binda* uma expressão ou método que será executada no *scope* da diretiva
+- **=**: pega um valor passado via atributo para directiva
+- **&**: *binda* uma expressão ou método que será executada no *scope* da directiva
 
 @ – binds the value of parent scope property (which always a string) to the local scope. So the value you want to pass in should be wrapped in {{}}. Remember `a` in braces.
 = – binds parent scope property directly which will be evaluated before being passed in.
@@ -599,7 +599,7 @@ Além de criamos um *Controller* para a directiva também podemos utilizar um j�
 .controller('ProductCtrl', function($scope, $http) {
   $scope.Product = { name: 'Produto teste', 
   price: 666,
-  description: 'Testando controller das diretivas'};
+  description: 'Testando controller das directivas'};
 })
 .directive("produtoTitulo", function(){
   return {
@@ -649,7 +649,7 @@ A função `compile` recebe 2 parâmetros:
 - $elem: é um objeto jqLite contendo o nó do DOM que está sendo compilado (então se a directiva estiver dentro de um elemento div, então o objeto jqLite é o nó que está dentro desse div)
 - $attrs: é um objeto e cada atributo no nó do DOM corresponde a uma propriedade dentro do objeto attrs (note que o nome da propriedade é a versão normalizada do nome do atributo, por exemplo, se meu-atributo é especificado no nó DOM, em seguida, os objeto attrs terá a propriedade meuAtributo e seu valor será o valor real atribuído ao atributo no DOM)
 
-Neste exemplo vamos ver como as directivas são processadas pelo AngularJS quando encontra-los em um template HTML e como podemos escrever nossas próprias diretivas personalizadas.
+Neste exemplo vamos ver como as directivas são processadas pelo AngularJS quando encontra-los em um template HTML e como podemos escrever nossas próprias directivas personalizadas.
 
 Exemplo: [http://plnkr.co/edit/B8zFNUcwARkjONxZhohX?p=preview](http://plnkr.co/edit/B8zFNUcwARkjONxZhohX?p=preview)
 
@@ -702,13 +702,13 @@ E também podemos receber como quarto parâmetro um *Controller*.
 ***
 ####transclude
 
-Pode haver um momento em que você quer que sua directiva "sobrescreva" o conteúdo existente de um elemento. Angular não só lhe permite fazer isso, mas também lhe dá um controle para inserir o DOM "transcluído" onde quiser usando a diretiva ngTransclude.
+Pode haver um momento em que você quer que sua directiva "sobrescreva" o conteúdo existente de um elemento. Angular não só lhe permite fazer isso, mas também lhe dá um controle para inserir o DOM "transcluído" onde quiser usando a directiva ngTransclude.
 
 - true
 - element
 
 #####true
-Dentro da função de *compile*, você pode manipular o DOM com a ajuda da função de transclude ou você pode inserir o DOM "transcluído" para o template usando a diretiva ngTransclude em qualquer tag HTML. Observe nossa antiga e adorada tag marquee:
+Dentro da função de *compile*, você pode manipular o DOM com a ajuda da função de transclude ou você pode inserir o DOM "transcluído" para o template usando a directiva ngTransclude em qualquer tag HTML. Observe nossa antiga e adorada tag marquee:
 
 ```html
 <div class="thumbnail" style="width: 260px;">
