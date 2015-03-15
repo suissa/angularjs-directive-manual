@@ -45,7 +45,7 @@ E todo o código foi encapsulado em uma [IIFE](http://benalman.com/news/2010/11/
 
 ![WAT](https://cldup.com/I-XX4sQNwq.jpg)
 
-Isso vazamento, para que seus dados não *vazem* para o escopo global, então com essa IIFE criamos um escopo local que nos garante o encapsulamento do dados.
+Isso vazamento, para que seus dados não *vazem* para o escopo global, então com essa IIFE criamos um escopo local que nos garante o encapsulamento dos dados.
 
 ###API
 
@@ -186,7 +186,7 @@ Vamos ver como o HTML foi compilado:
 <hello>Hello</hello>
 ```
 
-Então podemos perceber que ele terminou a compilação na primeira tag que não foi corretamente fechada.
+Então podemos perceber que ele terminou a compilação na primeira tag, que não foi corretamente fechada.
 
 Discussão sobre em [https://github.com/angular/angular.js/issues/1953](https://github.com/angular/angular.js/issues/1953).
 
@@ -226,7 +226,7 @@ Exemplo: [http://plnkr.co/edit/Wlnul9IGuDnZwOFjJdC3?p=preview](http://plnkr.co/e
 ***
 ####replace
 
-Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligado. No caso utilizado uma directiva como `<hello-world> </hello-world>`, a substituição é definida como `true`. Assim, após a directiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocado.
+Usado para especificar se o template gerado irá substituir o elemento HTML em que a directiva está ligada. No caso utilizando uma directiva como `<hello-world> </hello-world>`, a substituição é definida como `true`. Assim, após a directiva ser compilada, o template produzido substitui <hello-world> </hello-world>. O resultado final é `<h3> Hello World!!</h3>`. Se você definir `replace` como `false`, o padrão, o template será inserido no elemento em que a directiva é invocada.
 
 O código gerado com `replace: false`:
 
@@ -242,7 +242,7 @@ E agora gerado com `replace: true`:
 <h3>Hello World!!</h3>
 ```
 
-Então ele basicamente substitiu o seu elemento da directiva pelo resultado *compilado* dela. Com o `replace` setado como `true` você necessariamente precisa ter um elemento como raíz agrupando o conteúdo do template.
+Então ele basicamente substitui o seu elemento da directiva pelo resultado *compilado* dela. Com o `replace` setado como `true` você necessariamente precisa ter um elemento como raíz agrupando o conteúdo do template.
 
 Exemplo correto:
 
@@ -264,7 +264,7 @@ Caso você se depare com um erro assim:
  Template for directive 'directiveName' must have exactly one root element. 
 ```
 
-Já sabe que é porque você não encapulou seu template em uma tag.
+Já sabe que é porque você não encapsulou seu template em uma tag.
 
 Exemplo: [http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview](http://plnkr.co/edit/n9Az6LdPJjI9QQXtW8u1?p=preview)
 
@@ -301,7 +301,7 @@ Define o conteúdo que deve ser usado pela directiva. Pode incluir HTML, express
 }());
 ```
 
-Para usarmos os valores de escopo do *Controller* onde a directiva esta precisamos apenas chamar a variável como no template:
+Para usarmos os valores de escopo do *Controller* onde a directiva está, precisamos apenas chamar a variável como no template:
 
 ```html
  <div superman flash></div>
@@ -365,7 +365,7 @@ return {
   };
 ```
 
-Ou acessando um rota no servidor:
+Ou acessando uma rota no servidor:
 
 ```js
 return {
@@ -392,7 +392,7 @@ ul
 ####priority
 
 ![Tudo é prioridade](https://cldup.com/K2QgqX7BRL-1200x1200.jpeg)
-Esta opção diz ao AngularJS para ordenar as directivas por prioridade então uma directiva que tem maior prioridade será compilada ligadas antes das outras. A razão para ter essa opção é para podermos realizar seleção condicionada à saída da directiva compilada anteriormente.
+Esta opção diz ao AngularJS para ordenar as directivas por prioridade, então uma directiva que tem maior prioridade será compilada ligadas antes das outras. A razão para ter essa opção é para podermos realizar seleção condicionada à saída da directiva compilada anteriormente.
 
 No exemplo abaixo, eu quero adicionar classe `btn-primary` somente se o elemento tiver a classe `btn` nele.
 
@@ -461,15 +461,15 @@ Você só deve usar essa propriedade caso uma directiva dependa da outra para al
 
 É importante primeiro ter uma sólida compreensão da herança de protótipo do JavaScript, especialmente se você está vindo de um *background* de *backend* e você está mais familiarizado com a herança clássica. Então, vamos rever isso primeiro.
 
-Suponha que parentScope tem as propriedades aString, aNumber, umArray, anObject e AFunction. Se childScope herda prototipicamente de parentScope, temos:
+Suponha que parentScope tem as propriedades aString, aNumber, anArray, anObject e aFunction. Se childScope herda prototipicamente de parentScope, temos:
 
 ![](https://camo.githubusercontent.com/85ec776a0dd4acbe687f3db6367fa56872abb87f/687474703a2f2f692e737461636b2e696d6775722e636f6d2f61544147672e706e67)
 
-Ao contrário dos outros frameworks MVC, AngularJS não tem classes ou funções específicas para a criação de *models*. Em vez disso, AngularJS estende os objetos JavaScript com métodos e propriedades personalizados. Esses objetos, também conhecido como *scope*, trabalham como uma cola entre a *view* e outras partes (*directives*, *controllers* e *services*) dentro da aplicação.
+Ao contrário dos outros frameworks MVC, AngularJS não tem classes ou funções específicas para a criação de *models*. Em vez disso, AngularJS estende os objetos JavaScript com métodos e propriedades personalizados. Esses objetos, também conhecidos como *scopes*, trabalham como uma cola entre a *view* e outras partes (*directives*, *controllers* e *services*) dentro da aplicação.
 
 Quando a aplicação é iniciada, um objeto `rootScope` é criado. Cada *scope* criado por *directives*, *controllers* e *services* são prototipicamente herdados de rootScope.
 
-Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, elas aceita 3 valores:
+Essa opção é usada para criar um novo *scope* filho ou um *scope* isolado, ela aceita 3 valores:
 
 - false (padrão)
 - true
@@ -532,13 +532,13 @@ Exemplo: http://plnkr.co/edit/C0zlV1XnpbFHDPnbb5YS?p=preview
 ***
 #####scope: isolate
 
-Cria um *scope* isolado que não herda prototipicamente do *scope* pai, mas você pode acessar escopo pai usando scope.$parent.
+Cria um *scope* isolado que não herda prototipicamente do *scope* pai, mas você pode acessar o escopo pai usando scope.$parent.
 
 > How can I then share the data between isolated scope and its parent scope as scope.$parent is not much useful in case of templates?
 
 > Como eu posso compartilhar dados entre *scope* isolate e o *scope* pai?
 
-Bem, *scope* isolado pega um objeto/hash que leva você as propriedades do *scope* pai e *binda* elas no *scope* local. Existem 3 formas de fazer isso:
+Bem, *scope* isolado pega um objeto/hash que leva você às propriedades do *scope* pai e *binda* elas no *scope* local. Existem 3 formas de fazer isso:
 
 - **@**: pega o valor do *scope* pai
 - **=**: pega um valor passado via atributo para directiva
@@ -554,7 +554,7 @@ Bem, *scope* isolado pega um objeto/hash que leva você as propriedades do *scop
 
 Utilizado para definir o *Controller* que será associado ao template da directiva.
 
-Pode ser tratada como uma sala de controle de directiva. Você pode vincular as propriedades / métodos para US $ âmbito disponível ou essa palavra-chave. Os dados ligados a este estará acessível em outras directivas, injetando o controlador usando exigir opção. 
+Pode ser tratada como uma sala de controle de directiva. Você pode vincular as propriedades/métodos para US $ âmbito disponível ou essa palavra-chave. Os dados ligados a este estará acessível em outras directivas, injetando o controlador usando exigir opção. 
 
 Você pode pensar nesse método como a sala de controle da directiva, você pode adicionar propriedades/métodos ao `$scope` desse *Controller* e ele pode ser acessado em outras directivas injetando o *Controller* usando a opção `require`.
 No exemplo abaixo, vamos alternar o estado de uma lâmpada de modo que as directivas filhas saberão sobre o estado atual.
@@ -584,11 +584,11 @@ E no HTML:
 
 ```
 
-Nesse exemplo criamos um *Controller* específico para essa directiva onde adicionamos propriedade e método, esse o qual pôde ser chamado no método `link` para atrelar a função `toggle` ao evento de click desse elemento usando a directiva `ng-click="toggle()"`. Então a cada click nesse botão ele inverte o `$scope.state`, simples não?
+Nesse exemplo criamos um *Controller* específico para essa directiva, onde adicionamos propriedade e método, esse o qual pôde ser chamado no método `link` para atrelar a função `toggle` ao evento de click desse elemento usando a directiva `ng-click="toggle()"`. Então a cada click nesse botão ele inverte o `$scope.state`, simples não?
 
 Exemplo: [http://plnkr.co/edit/AYi0Fh9tsHo428DoMXZd?p=preview](http://plnkr.co/edit/AYi0Fh9tsHo428DoMXZd?p=preview)
 
-Além de criamos um *Controller* para a directiva também podemos utilizar um já existe.
+Além de criamos um *Controller* para a directiva também podemos utilizar um já existente.
 
 ```html
 <produto-titulo></produto-titulo>
@@ -647,19 +647,19 @@ Use colchetes para requisitar múltiplas directivas:
 A função `compile` recebe 2 parâmetros:
 
 - $elem: é um objeto jqLite contendo o nó do DOM que está sendo compilado (então se a directiva estiver dentro de um elemento div, então o objeto jqLite é o nó que está dentro desse div)
-- $attrs: é um objeto e cada atributo no nó do DOM corresponde a uma propriedade dentro do objeto attrs (note que o nome da propriedade é a versão normalizada do nome do atributo, por exemplo, se meu-atributo é especificado no nó DOM, em seguida, os objeto attrs terá a propriedade meuAtributo e seu valor será o valor real atribuído ao atributo no DOM)
+- $attrs: é um objeto e cada atributo no nó do DOM corresponde a uma propriedade dentro do objeto attrs (note que o nome da propriedade é a versão normalizada do nome do atributo, por exemplo, se meu-atributo é especificado no nó DOM, em seguida, o objeto attrs terá a propriedade meuAtributo e seu valor será o valor real atribuído ao atributo no DOM)
 
-Neste exemplo vamos ver como as directivas são processadas pelo AngularJS quando encontra-los em um template HTML e como podemos escrever nossas próprias directivas personalizadas.
+Neste exemplo vamos ver como as directivas são processadas pelo AngularJS quando os encontra em um template HTML e como podemos escrever nossas próprias directivas personalizadas.
 
 Exemplo: [http://plnkr.co/edit/B8zFNUcwARkjONxZhohX?p=preview](http://plnkr.co/edit/B8zFNUcwARkjONxZhohX?p=preview)
 
 #####Fases de inicialização, compilação e linking
 
-Quando AngularJS analisa o template HTML para processar as directivas, podemos identificar três fases principais que cada directiva passa por:
+Quando AngularJS analisa o template HTML para processar as directivas, podemos identificar as três fases principais que cada directiva passa:
 
-- inicialização: isso acontece quando uma directiva é encontrada pela primeira vez na passagem de árvore DOM (assim acontece apenas uma vez, mesmo que a directiva apareça várias vezes no template HTML) e permite que a directiva  inicialize-se internamente, se necessário
-- compilação: nesta fase o AngularJS manipula o DOM do template HTML e cada directiva tem uma chance de fazer algum processamento para cada nó em que ela aparece (por isso, se a mesma directiva aparece em vários nós DOM, a compilação da directiva terá cha para cada node); na fase de compilação de uma directiva também tem a chance de modificar o nó DOM antes de um escopo é ligado a ele
-- nesta fase o AngularJS atribui *listeners* de eventos para o template HTML para torná-lo interativo e atribui um *scope* da directiva e ele faz isso para cada nó do DOM em que a directiva aparece; a fase de linking ocorre após a compilação de todo o template HTML foi executado
+- inicialização: isso acontece quando uma directiva é encontrada pela primeira vez na passagem de árvore DOM (assim acontece apenas uma vez, mesmo que a directiva apareça várias vezes no template HTML) e permite que a directiva inicialize-se internamente, se necessário
+- compilação: nesta fase o AngularJS manipula o DOM do template HTML e cada directiva tem uma chance de fazer algum processamento para cada nó em que ela aparece (por isso, se a mesma directiva aparece em vários nós DOM, a compilação da directiva será chamada para cada node); na fase de compilação de uma directiva também tem a chance de modificar o nó DOM antes de um escopo ser ligado a ele
+- linking: nesta fase o AngularJS atribui *listeners* de eventos para o template HTML para torná-lo interativo e atribui um *scope* da directiva e ele faz isso para cada nó do DOM em que a directiva aparece; a fase de linking ocorre após a compilação de todo o template HTML executado
 
 ***
 ####link
@@ -691,7 +691,7 @@ return {
 };
 ```
 
-Como vemos a  função `link` recebe 3 parâmetros:
+Como vemos a função `link` recebe 3 parâmetros:
 
 - $scope: é o *scope* associado a nossa directiva
 - $elem: é equivalente ao mesmo parâmetro a função `compile`
