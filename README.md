@@ -7,6 +7,11 @@
 - [Como criar](https://github.com/suissa/angularjs-directive-manual#como-criar)
 - [API](https://github.com/suissa/angularjs-directive-manual#api)
 - [restrict](https://github.com/suissa/angularjs-directive-manual#restrict)
+- [replace](https://github.com/suissa/angularjs-directive-manual#replace)
+
+
+
+![Exército de clones](https://cldup.com/04QHfHjmPv.thumb.png)
 
 
 
@@ -14,7 +19,6 @@
 
 ##Directivas
 
-![Exército de clones](https://cldup.com/04QHfHjmPv.thumb.png)
 
 As directivas são marcadores em um elemento DOM (como um atributo, o nome do elemento, comentário ou classe CSS) que informam ao compilador HTML do AngularJS ($compile) para anexar um comportamento específico para o elemento DOM ou mesmo transformar o elemento DOM e seus filhos.
 
