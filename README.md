@@ -11,11 +11,16 @@
 
 
 
+
+## PRECISO ATUALIZAR PARA COMPONENTS DO 1.5
+
+
+
+
+
 ![Exército de clones](https://cldup.com/04QHfHjmPv.thumb.png)
 
 
-
-## PRECISO ATUALIZAR PARA COMPONENTS DO 1.5
 
 ##Directivas
 
