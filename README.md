@@ -6,6 +6,9 @@
 
 - [Como criar](https://github.com/suissa/angularjs-directive-manual#como-criar)
 - [API](https://github.com/suissa/angularjs-directive-manual#api)
+- [restrict](https://github.com/suissa/angularjs-directive-manual#restrict)
+
+
 
 ## PRECISO ATUALIZAR PARA COMPONENTS DO 1.5
 
