@@ -10,6 +10,11 @@
 - [replace](https://github.com/suissa/angularjs-directive-manual#replace)
 - [template](https://github.com/suissa/angularjs-directive-manual#template)
 - [templateUrl](https://github.com/suissa/angularjs-directive-manual#templateurl)
+- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
+- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
+- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
+- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
+
 
 
 ## PRECISO ATUALIZAR PARA COMPONENTS DO 1.5
