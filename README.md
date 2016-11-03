@@ -11,9 +11,11 @@
 - [template](https://github.com/suissa/angularjs-directive-manual#template)
 - [templateUrl](https://github.com/suissa/angularjs-directive-manual#templateurl)
 - [priority](https://github.com/suissa/angularjs-directive-manual#priority)
-- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
-- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
-- [priority](https://github.com/suissa/angularjs-directive-manual#priority)
+- [scope](https://github.com/suissa/angularjs-directive-manual#scope)
+- [controller](https://github.com/suissa/angularjs-directive-manual#controller)
+- [require](https://github.com/suissa/angularjs-directive-manual#require)
+- [require](https://github.com/suissa/angularjs-directive-manual#require)
+- [require](https://github.com/suissa/angularjs-directive-manual#require)
 
 
 
