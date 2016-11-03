@@ -8,7 +8,7 @@
 - [API](https://github.com/suissa/angularjs-directive-manual#api)
 - [restrict](https://github.com/suissa/angularjs-directive-manual#restrict)
 - [replace](https://github.com/suissa/angularjs-directive-manual#replace)
-
+- [template](https://github.com/suissa/angularjs-directive-manual#template)
 
 
 
