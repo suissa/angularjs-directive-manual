@@ -2,6 +2,10 @@
 
 ![Logo do AngularJS](https://cldup.com/cWbFHP8Pol-1200x1200.png)
 
+## ÍNDICE
+
+- [Como criar](https://github.com/suissa/angularjs-directive-manual#como-criar)
+
 ## PRECISO ATUALIZAR PARA COMPONENTS DO 1.5
 
 ##Directivas
