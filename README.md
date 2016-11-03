@@ -14,9 +14,9 @@
 - [scope](https://github.com/suissa/angularjs-directive-manual#scope)
 - [controller](https://github.com/suissa/angularjs-directive-manual#controller)
 - [require](https://github.com/suissa/angularjs-directive-manual#require)
-- [require](https://github.com/suissa/angularjs-directive-manual#require)
-- [require](https://github.com/suissa/angularjs-directive-manual#require)
-
+- [compile](https://github.com/suissa/angularjs-directive-manual#compile)
+- [link](https://github.com/suissa/angularjs-directive-manual#link)
+- [transculde](https://github.com/suissa/angularjs-directive-manual#transculde)
 
 
 ## PRECISO ATUALIZAR PARA COMPONENTS DO 1.5
